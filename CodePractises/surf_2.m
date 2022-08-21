@@ -1,0 +1,14 @@
+clear;
+dphi = pi/100;
+phi = 0:dphi:2*pi;
+dth = pi/100;
+th = 0:dth:pi;
+[Th, Phi] = meshgrid(th,phi);
+R = 1+3*cos(4*Phi);
+X = R.*sin(Th).*cos(Phi);
+Y = R.*sin(Th).*sin(Phi);
+Z = R.*cos(Th);
+surf(X,Y,Z);
+% axis equal;
+shading interp;
+colormap winter;
