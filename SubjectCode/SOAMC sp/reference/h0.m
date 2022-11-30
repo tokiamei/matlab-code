@@ -3,6 +3,7 @@
 % ====================== 备注：具有自旋轨道耦合的单粒子哈密顿量 ===========
 
 % ====================== 矩阵元涉及的变量定义 ============
+close all; clear all;
 N=500; % 矩阵阶数：2N
 rhomax=100; % 自变量最大取值
 rhomin=0; % 自变量最小取值
@@ -12,8 +13,9 @@ rho = linspace(rhomin, rhomax, N); % 这样写效果不一样吗
 DF = rho(2) - rho(1); 
 
 % ============ 光强强度调节量：I0 =======================
-I10=1;
-I20=1;
+I0 = 0;
+I10=I0;
+I20=I0;
 w=5; % 光场频率：w，束宽
 
 L1=0.5; % 拉盖尔高斯函数：L，常数
@@ -108,8 +110,9 @@ for Lz = Lzmin : Lzmax
     [D_sort,index] = sort(diag(Eig));
     EnergySpectrum(n,:)=D_sort(1:15);
 
-    plot(Lz,EnergySpectrum(n,:),'s','MarkerEdgeColor','k','MarkerFaceColor','k', 'MarkerSize',6);
+    plot(Lz,EnergySpectrum(n,:),'s','MarkerEdgeColor','k','MarkerFaceColor','k', 'MarkerSize',5);
 end
-xlabel('I=0');
-xlim([-5,5]);
-ylim([0,10]);
+axis([-5 5 0 20]);
+xlabel('\it L_z', 'FontName','Times New Roman');
+ylabel('\it E', 'FontName','Times New Roman');
+
